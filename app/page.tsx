@@ -8,7 +8,8 @@ import {
   Blocks,
   Code2,
   Cpu,
-  Database,  Globe2,
+  Database,
+  Globe2,
   GraduationCap,
   Mail,
   MonitorCog,
@@ -261,7 +262,9 @@ function TechOrbit({ items }: { items: string[] }) {
       <div className="absolute left-1/2 top-[46%] z-10 flex h-40 w-40 -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-[2rem] border border-cyan-300/20 bg-slate-950/90 p-5 text-center shadow-2xl shadow-cyan-950/40 backdrop-blur-xl">
         <Code2 className="mb-3 h-7 w-7 text-cyan-200" />
         <p className="text-sm font-black text-white">Full-Stack</p>
-        <p className="mt-1 text-xs leading-5 text-slate-400">Frontend, backend, database, deployment</p>
+        <p className="mt-1 text-xs leading-5 text-slate-400">
+          Frontend, backend, database, deployment
+        </p>
       </div>
 
       <div className="absolute bottom-6 left-0 right-0 overflow-hidden border-y border-white/10 bg-black/20 py-4">
@@ -303,18 +306,22 @@ export default function RyanKizitoPortfolio() {
         <div className="absolute bottom-[-20%] left-[20%] h-[35rem] w-[35rem] rounded-full bg-amber-500/10 blur-[150px]" />
       </div>
 
-      <header className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-5 py-6 sm:px-8">
-        <a href="#home" className="group flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-cyan-300/20 bg-white/10 shadow-lg shadow-cyan-500/10">
+      <header className="relative z-30 mx-auto flex max-w-[1800px] items-start justify-between px-5 py-5 sm:px-8 xl:px-10">
+        <a href="#home" className="group flex items-center gap-4 pt-2">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/20 bg-white/10 shadow-lg shadow-cyan-500/10">
             <Code2 className="h-5 w-5 text-cyan-200" />
           </div>
           <div>
-            <p className="text-sm font-bold tracking-wide">Ryan Kizito</p>
-            <p className="text-xs text-slate-400">Full-Stack Developer</p>
+            <p className="text-base font-black tracking-wide text-white sm:text-lg lg:text-xl">
+              Ryan Kizito
+            </p>
+            <p className="text-sm text-slate-400 sm:text-base">
+              Full-Stack Developer
+            </p>
           </div>
         </a>
 
-        <nav className="hidden items-center gap-7 text-sm text-slate-300 md:flex">
+        <nav className="hidden items-center gap-6 pt-5 pr-40 text-sm text-slate-300 md:flex lg:gap-8 lg:pr-52 lg:text-[15px] xl:gap-10 xl:pr-64 2xl:pr-72">
           <a className="transition hover:text-white" href="#services">
             Services
           </a>
@@ -327,19 +334,96 @@ export default function RyanKizitoPortfolio() {
           <a className="transition hover:text-white" href="#contact">
             Contact
           </a>
+          <a
+            className="transition hover:text-white"
+            href="mailto:webchemydevelopers@gmail.com"
+          >
+            Hire Me
+          </a>
         </nav>
 
-        <a
-          href="mailto:webchemydevelopers@gmail.com"
-          className="hidden rounded-full border border-white/10 bg-white/10 px-5 py-2.5 text-sm font-semibold text-white transition hover:border-cyan-300/40 hover:bg-cyan-300/10 sm:inline-flex"
+        <motion.div
+          animate={{ y: [0, -8, 0], rotate: [0, 1.2, 0] }}
+          transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+          className="pointer-events-none absolute right-5 top-5 z-40 hidden h-32 w-32 overflow-hidden rounded-[2.5rem] border border-cyan-300/25 bg-white/10 p-1.5 shadow-2xl shadow-cyan-500/20 backdrop-blur-xl md:block lg:right-8 lg:h-40 lg:w-40 xl:h-48 xl:w-48 2xl:h-52 2xl:w-52"
         >
-          Hire Me
-        </a>
+          <img
+            src="/ryan-profile.png"
+            alt="Ryan Kizito profile photo"
+            className="h-full w-full rounded-[2rem] object-cover"
+          />
+          <div className="absolute inset-0 rounded-[2.4rem] bg-gradient-to-t from-slate-950/25 to-transparent" />
+        </motion.div>
+
+        <div className="pointer-events-none absolute right-4 top-4 z-50 md:hidden">
+          {Array.from({ length: 14 }).map((_, index) => {
+            const angle = (Math.PI * 2 * index) / 14;
+            const distance = index % 2 === 0 ? 58 : 78;
+            const colors = ["#67e8f9", "#a78bfa", "#fbbf24", "#22d3ee", "#f472b6"];
+
+            return (
+              <motion.span
+                key={index}
+                className="absolute left-1/2 top-1/2 h-2.5 w-2.5 rounded-full shadow-lg"
+                style={{ backgroundColor: colors[index % colors.length] }}
+                initial={{ opacity: 0, x: 0, y: 0, scale: 0.2 }}
+                animate={{
+                  opacity: [0, 0, 0, 1, 0],
+                  x: [
+                    0,
+                    0,
+                    0,
+                    Math.cos(angle) * distance,
+                    Math.cos(angle) * (distance + 18),
+                  ],
+                  y: [
+                    0,
+                    0,
+                    0,
+                    Math.sin(angle) * distance,
+                    Math.sin(angle) * (distance + 18),
+                  ],
+                  scale: [0.2, 0.2, 0.2, 1.25, 0],
+                }}
+                transition={{
+                  duration: 6.8,
+                  times: [0, 0.56, 0.72, 0.84, 1],
+                  repeat: Infinity,
+                  ease: "easeOut",
+                  delay: index * 0.018,
+                }}
+              />
+            );
+          })}
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.86, y: -170 }}
+            animate={{
+              opacity: [0, 1, 1, 1, 0],
+              scale: [0.86, 1, 1, 1.04, 0.94],
+              y: [-170, 0, 0, 0, -28],
+            }}
+            transition={{
+              duration: 6.8,
+              times: [0, 0.3, 0.7, 0.84, 1],
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="relative h-24 w-24 overflow-hidden rounded-[2rem] border border-cyan-300/30 bg-slate-950/70 p-1.5 shadow-2xl shadow-cyan-500/25 backdrop-blur-xl"
+          >
+            <img
+              src="/ryan-profile.png"
+              alt="Ryan Kizito profile photo"
+              className="h-full w-full rounded-[1.55rem] object-cover"
+            />
+            <div className="absolute inset-0 rounded-[1.9rem] bg-gradient-to-t from-slate-950/30 to-transparent" />
+          </motion.div>
+        </div>
       </header>
 
       <section
         id="home"
-        className="relative z-10 mx-auto grid min-h-[calc(100vh-92px)] max-w-7xl items-center gap-12 px-5 pb-20 pt-10 sm:px-8 lg:grid-cols-[1.05fr_0.95fr]"
+        className="relative z-10 mx-auto -mt-6 grid min-h-[calc(100vh-76px)] max-w-7xl items-center gap-12 px-5 pb-20 pt-4 sm:px-8 lg:grid-cols-[1.05fr_0.95fr]"
       >
         <div>
           <motion.div
@@ -409,6 +493,8 @@ export default function RyanKizitoPortfolio() {
         </div>
 
         <div className="relative min-h-[560px]">
+          
+
           <motion.div
             animate={{ y: [0, -16, 0], rotate: [0, 1.2, 0] }}
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
