@@ -1,18 +1,22 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useInView, useMotionValue, useSpring } from "motion/react";
 import {
   ArrowRight,
   BadgeCheck,
+  Bot,
   Blocks,
+  CalendarCheck,
   Code2,
+  CreditCard,
   Cpu,
   Database,
-  Globe2,
   GraduationCap,
+  LayoutDashboard,
   Mail,
-  MonitorCog,
+  Plane,
   PhoneCall,
   Rocket,
   Server,
@@ -24,34 +28,44 @@ import {
 
 const services = [
   {
-    title: "SaaS Platforms",
-    desc: "Subscription-ready platforms with dashboards, roles, payments, analytics, and scalable architecture.",
-    icon: Blocks,
-  },
-  {
-    title: "Web Applications",
-    desc: "Custom business systems, admin panels, portals, booking flows, and internal operations tools.",
-    icon: Globe2,
-  },
-  {
-    title: "Mobile Applications",
-    desc: "React Native mobile app concepts and production-ready app experiences connected to real backends.",
-    icon: Smartphone,
-  },
-  {
-    title: "Desktop Apps",
-    desc: "Business desktop solutions for offline-first workflows, records, reports, and structured operations.",
-    icon: MonitorCog,
-  },
-  {
-    title: "School & LMS Systems",
-    desc: "Learning platforms, fees systems, student records, certificates, payments, and instructor workflows.",
+    title: "Learning Management Systems",
+    desc: "Course portals with student dashboards, instructor workflows, certificates, payments, and measurable learning progress.",
     icon: GraduationCap,
   },
   {
-    title: "SACCO / Loan Systems",
-    desc: "Loan tracking, member ledgers, payments, balances, reporting, and transaction management systems.",
+    title: "School Management Systems",
+    desc: "Admissions, fees, records, reports, user roles, and parent-facing workflows for education teams.",
     icon: ShieldCheck,
+  },
+  {
+    title: "Tourism & Booking Platforms",
+    desc: "Destination websites and booking flows designed to convert visitors into inquiries and reservations.",
+    icon: Plane,
+  },
+  {
+    title: "Admin Dashboards",
+    desc: "Clean operational dashboards for teams that need to manage users, content, analytics, and internal workflows.",
+    icon: LayoutDashboard,
+  },
+  {
+    title: "Payment Integrations",
+    desc: "Stripe, Pesapal, and payment verification flows connected to useful records, receipts, and reports.",
+    icon: CreditCard,
+  },
+  {
+    title: "Business Automation Systems",
+    desc: "Custom portals, CRMs, loan systems, notifications, reports, and workflows that reduce manual work.",
+    icon: Workflow,
+  },
+  {
+    title: "AI-powered Applications",
+    desc: "Practical AI features for search, content workflows, customer support, document handling, and internal tools.",
+    icon: Bot,
+  },
+  {
+    title: "SaaS & Web Platforms",
+    desc: "Subscription-ready products with roles, databases, APIs, responsive interfaces, and reliable deployment.",
+    icon: Blocks,
   },
 ];
 
@@ -59,30 +73,61 @@ const projects = [
   {
     name: "Bilge Online Institute",
     category: "Learning Management System",
-    summary:
-      "A global-facing LMS concept with courses, payments, student dashboards, instructor workflows, and certificates.",
+    problem:
+      "Training teams need a structured way to sell courses, onboard learners, and track progress online.",
+    solution:
+      "Designed an LMS direction with courses, payments, student dashboards, instructor workflows, and certificates.",
+    impact:
+      "Creates a stronger path from enrollment to delivery, with less manual administration.",
     stack: ["Next.js", "Node.js", "PostgreSQL", "Prisma", "Payments"],
   },
   {
     name: "PROBA Safaris",
     category: "Tourism Website",
-    summary:
-      "A tourism and travel website designed to attract trip inquiries, destination interest, and safari bookings.",
+    problem:
+      "Travel brands need to convert destination interest into qualified trip inquiries.",
+    solution:
+      "Built a tourism website direction with clear safari packages, destination storytelling, and inquiry-focused flows.",
+    impact:
+      "Improves trust, search visibility, and the visitor journey from browsing to booking.",
     stack: ["HTML", "Bootstrap", "JavaScript", "SEO"],
   },
   {
     name: "Kamagara Concepts",
     category: "Photography Portfolio",
-    summary:
-      "A premium portfolio direction for documentary photography, events, editorial storytelling, and visual identity.",
+    problem:
+      "Creative professionals need a portfolio that sells credibility without distracting from the work.",
+    solution:
+      "Created a premium portfolio direction for documentary photography, events, editorial storytelling, and visual identity.",
+    impact:
+      "Helps prospects understand the brand, inspect the work, and start a serious conversation.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
   },
   {
     name: "Loan Management System",
     category: "Business Web App",
-    summary:
-      "A practical web app for tracking borrowers, ledgers, payments, balances, transaction reports, and receipts.",
+    problem:
+      "Loan teams often lose time reconciling borrowers, balances, payments, reports, and receipts manually.",
+    solution:
+      "Built a practical web app for borrowers, ledgers, payments, balances, transaction reports, and receipts.",
+    impact:
+      "Improves accuracy, accountability, and day-to-day visibility for finance operations.",
     stack: ["Node.js", "Express", "EJS", "Database"],
+  },
+];
+
+const testimonials = [
+  {
+    quote:
+      "Project feedback and client outcomes can be featured here as new engagements go live.",
+    person: "Client testimonial placeholder",
+    role: "Available for verified results",
+  },
+  {
+    quote:
+      "The goal is always the same: clear communication, useful systems, and products that feel dependable.",
+    person: "Delivery approach",
+    role: "Built around business value",
   },
 ];
 
@@ -308,34 +353,34 @@ export default function RyanKizitoPortfolio() {
 
       <header className="relative z-30 mx-auto flex max-w-[1800px] items-start justify-between px-5 py-5 sm:px-8 xl:px-10">
         <a href="#home" className="group flex items-center gap-4 pt-2">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/20 bg-white/10 shadow-lg shadow-cyan-500/10">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/20 bg-white/10 shadow-lg shadow-cyan-500/10 transition group-hover:-translate-y-0.5 group-hover:border-cyan-300/35">
             <Code2 className="h-5 w-5 text-cyan-200" />
           </div>
           <div>
             <p className="text-base font-black tracking-wide text-white sm:text-lg lg:text-xl">
               Ryan Kizito
             </p>
-            <p className="text-sm text-slate-400 sm:text-base">
-              Full-Stack Developer
+            <p className="text-sm leading-5 text-slate-400 sm:text-base">
+              Business Systems Developer
             </p>
           </div>
         </a>
 
-        <nav className="hidden items-center gap-6 pt-5 pr-40 text-sm text-slate-300 md:flex lg:gap-8 lg:pr-52 lg:text-[15px] xl:gap-10 xl:pr-64 2xl:pr-72">
-          <a className="transition hover:text-white" href="#services">
-            Services
+        <nav aria-label="Primary navigation" className="hidden items-center gap-6 rounded-full border border-white/10 bg-white/[0.04] px-5 py-3 text-sm text-slate-300 backdrop-blur-xl md:flex lg:gap-8 lg:text-[15px]">
+          <a className="relative transition after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-cyan-200 after:transition-all hover:text-white hover:after:w-full" href="#services">
+            What I Build
           </a>
-          <a className="transition hover:text-white" href="#projects">
+          <a className="relative transition after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-cyan-200 after:transition-all hover:text-white hover:after:w-full" href="#projects">
             Projects
           </a>
-          <a className="transition hover:text-white" href="#stack">
+          <a className="relative transition after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-cyan-200 after:transition-all hover:text-white hover:after:w-full" href="#stack">
             Stack
           </a>
-          <a className="transition hover:text-white" href="#contact">
+          <a className="relative transition after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-cyan-200 after:transition-all hover:text-white hover:after:w-full" href="#contact">
             Contact
           </a>
           <a
-            className="transition hover:text-white"
+            className="rounded-full bg-cyan-300 px-4 py-2 font-black text-slate-950 shadow-lg shadow-cyan-500/15 transition hover:-translate-y-0.5 hover:bg-cyan-200"
             href="mailto:webchemydevelopers@gmail.com"
           >
             Hire Me
@@ -347,9 +392,13 @@ export default function RyanKizitoPortfolio() {
           transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
           className="pointer-events-none absolute right-5 top-5 z-40 hidden h-32 w-32 overflow-hidden rounded-[2.5rem] border border-cyan-300/25 bg-white/10 p-1.5 shadow-2xl shadow-cyan-500/20 backdrop-blur-xl md:block lg:right-8 lg:h-40 lg:w-40 xl:h-48 xl:w-48 2xl:h-52 2xl:w-52"
         >
-          <img
+          <Image
             src="/ryan-profile.png"
             alt="Ryan Kizito profile photo"
+            width={412}
+            height={606}
+            loading="eager"
+            sizes="(min-width: 1280px) 208px, (min-width: 1024px) 192px, 160px"
             className="h-full w-full rounded-[2rem] object-cover"
           />
           <div className="absolute inset-0 rounded-[2.4rem] bg-gradient-to-t from-slate-950/25 to-transparent" />
@@ -411,9 +460,13 @@ export default function RyanKizitoPortfolio() {
             }}
             className="relative h-24 w-24 overflow-hidden rounded-[2rem] border border-cyan-300/30 bg-slate-950/70 p-1.5 shadow-2xl shadow-cyan-500/25 backdrop-blur-xl"
           >
-            <img
+            <Image
               src="/ryan-profile.png"
               alt="Ryan Kizito profile photo"
+              width={412}
+              height={606}
+              loading="eager"
+              sizes="96px"
               className="h-full w-full rounded-[1.55rem] object-cover"
             />
             <div className="absolute inset-0 rounded-[1.9rem] bg-gradient-to-t from-slate-950/30 to-transparent" />
@@ -423,61 +476,68 @@ export default function RyanKizitoPortfolio() {
 
       <section
         id="home"
-        className="relative z-10 mx-auto -mt-6 grid min-h-[calc(100vh-76px)] max-w-7xl items-center gap-12 px-5 pb-20 pt-4 sm:px-8 lg:grid-cols-[1.05fr_0.95fr]"
+        className="relative z-10 mx-auto grid min-h-[calc(100vh-76px)] max-w-7xl items-center gap-12 px-5 pb-20 pt-8 sm:px-8 lg:grid-cols-[1.02fr_0.98fr] lg:pt-2"
       >
         <div>
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65 }}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-sm text-slate-300 backdrop-blur-xl"
+            className="mb-7 inline-flex max-w-full items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-sm leading-5 text-slate-300 shadow-lg shadow-cyan-950/10 backdrop-blur-xl"
           >
             <span className="relative flex h-2.5 w-2.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-300 opacity-75" />
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-cyan-300" />
             </span>
-            Available for websites, SaaS systems, apps & dashboards
+            Available for client work, SaaS builds, dashboards & automation
           </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.08 }}
-            className="max-w-4xl text-5xl font-black leading-[0.95] tracking-[-0.06em] text-white sm:text-6xl lg:text-7xl"
+            className="max-w-5xl text-5xl font-black leading-[0.92] tracking-[-0.045em] text-white sm:text-6xl lg:text-7xl xl:text-[5.35rem]"
           >
-            I build premium software systems that help businesses operate smarter.
+            I build scalable digital platforms that solve real business problems.
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.18 }}
-            className="mt-7 max-w-2xl text-lg leading-8 text-slate-300"
+            className="mt-8 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl sm:leading-9"
           >
-            I design and develop websites, SaaS platforms, web applications,
-            mobile app experiences, dashboards, and business management systems
-            using modern technologies.
+            Full-stack software developer focused on modern web systems,
+            AI-powered workflows, payment-ready platforms, and automation tools
+            that help organizations move faster with cleaner operations.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.28 }}
-            className="mt-9 flex flex-col gap-4 sm:flex-row"
+            className="mt-10 flex flex-col gap-4 sm:flex-row"
           >
             <a
               href="#projects"
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-cyan-300 px-6 py-3.5 text-sm font-black text-slate-950 shadow-xl shadow-cyan-500/20 transition hover:-translate-y-1 hover:bg-cyan-200"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-cyan-300 px-7 py-4 text-sm font-black text-slate-950 shadow-xl shadow-cyan-500/25 transition duration-300 hover:-translate-y-1 hover:bg-cyan-200 hover:shadow-cyan-400/35 focus:outline-none focus:ring-2 focus:ring-cyan-200 focus:ring-offset-2 focus:ring-offset-slate-950"
             >
               View My Work
               <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
             </a>
             <a
               href="https://wa.me/256770327098"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/10 px-6 py-3.5 text-sm font-bold text-white backdrop-blur-xl transition hover:-translate-y-1 hover:border-white/25 hover:bg-white/15"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/10 px-7 py-4 text-sm font-bold text-white shadow-lg shadow-black/10 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-cyan-200/30 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-cyan-200 focus:ring-offset-2 focus:ring-offset-slate-950"
             >
               <PhoneCall className="h-4 w-4" />
               Start a Project
+            </a>
+            <a
+              href="mailto:webchemydevelopers@gmail.com?subject=CV%20Request%20for%20Ryan%20Kizito"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-7 py-4 text-sm font-bold text-cyan-100 shadow-lg shadow-cyan-950/15 backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-cyan-200/40 hover:bg-cyan-300/15 focus:outline-none focus:ring-2 focus:ring-cyan-200 focus:ring-offset-2 focus:ring-offset-slate-950"
+            >
+              <Mail className="h-4 w-4" />
+              Request CV
             </a>
           </motion.div>
 
@@ -485,14 +545,14 @@ export default function RyanKizitoPortfolio() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.45 }}
-            className="mt-10 flex flex-wrap items-center gap-3 text-sm text-slate-400"
+            className="mt-10 flex flex-wrap items-center gap-3 text-sm leading-6 text-slate-400"
           >
             <BadgeCheck className="h-5 w-5 text-cyan-200" />
-            <span>From idea, UI, backend, database, deployment, to maintenance.</span>
+            <span>Strategy, UI, backend, database, deployment, and long-term maintenance.</span>
           </motion.div>
         </div>
 
-        <div className="relative min-h-[560px]">
+        <div className="relative min-h-[470px] sm:min-h-[560px]">
           
 
           <motion.div
@@ -592,7 +652,7 @@ export default function RyanKizitoPortfolio() {
 
       <section
         id="services"
-        className="relative z-10 mx-auto max-w-7xl px-5 py-24 sm:px-8"
+        className="relative z-10 mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-28"
       >
         <SectionLabel>What I Build</SectionLabel>
         <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
@@ -603,12 +663,12 @@ export default function RyanKizitoPortfolio() {
             transition={{ duration: 0.65 }}
           >
             <h2 className="text-4xl font-black tracking-[-0.04em] sm:text-5xl">
-              From simple websites to serious business systems.
+              Digital products built for real operations, not just nice screens.
             </h2>
             <p className="mt-5 max-w-xl text-lg leading-8 text-slate-300">
-              I do not only create pages. I build digital tools that help
-              businesses collect data, manage clients, receive payments,
-              automate workflows, and make better decisions.
+              I build practical systems that help businesses collect data,
+              manage clients, receive payments, automate workflows, and make
+              better decisions from one reliable digital platform.
             </p>
           </motion.div>
 
@@ -623,12 +683,12 @@ export default function RyanKizitoPortfolio() {
                   viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.55, delay: index * 0.06 }}
                   whileHover={{ y: -8, scale: 1.01 }}
-                  className="group rounded-3xl border border-white/10 bg-white/[0.05] p-6 backdrop-blur-xl transition hover:border-cyan-300/30 hover:bg-white/[0.08]"
+                  className="group rounded-3xl border border-white/10 bg-white/[0.05] p-6 shadow-xl shadow-black/10 backdrop-blur-xl transition duration-300 hover:border-cyan-300/30 hover:bg-white/[0.08] hover:shadow-cyan-950/20"
                 >
                   <div className="mb-5 inline-flex rounded-2xl bg-cyan-300/10 p-3 text-cyan-200 transition group-hover:bg-cyan-300 group-hover:text-slate-950">
                     <Icon className="h-6 w-6" />
                   </div>
-                  <h3 className="text-xl font-black">{service.title}</h3>
+                  <h3 className="text-xl font-black leading-7">{service.title}</h3>
                   <p className="mt-3 leading-7 text-slate-400">{service.desc}</p>
                 </motion.div>
               );
@@ -637,7 +697,7 @@ export default function RyanKizitoPortfolio() {
         </div>
       </section>
 
-      <section id="projects" className="relative z-10 bg-white/[0.03] py-24">
+      <section id="projects" className="relative z-10 bg-white/[0.03] py-24 lg:py-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <SectionLabel>Featured Projects</SectionLabel>
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
@@ -646,9 +706,9 @@ export default function RyanKizitoPortfolio() {
                 Real work, real systems, real business problems.
               </h2>
               <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
-                These projects show the direction of work I focus on: software
-                that solves operational problems and creates stronger digital
-                presence.
+                These projects show the kind of work I focus on: systems that
+                improve operations, support growth, and make digital experiences
+                easier to trust.
               </p>
             </div>
             <a
@@ -668,30 +728,48 @@ export default function RyanKizitoPortfolio() {
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.55, delay: index * 0.08 }}
                 whileHover={{ y: -8 }}
-                className="overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/70 shadow-2xl shadow-black/20 backdrop-blur-xl"
+                className="group overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/75 shadow-2xl shadow-black/20 backdrop-blur-xl transition duration-300 hover:border-cyan-300/25 hover:shadow-cyan-950/25"
               >
                 <div className="h-48 border-b border-white/10 bg-gradient-to-br from-cyan-300/20 via-violet-500/15 to-amber-300/10 p-5">
-                  <div className="flex h-full flex-col justify-between rounded-3xl border border-white/10 bg-black/20 p-4">
+                  <div className="flex h-full flex-col justify-between rounded-3xl border border-white/10 bg-black/20 p-4 transition duration-300 group-hover:border-cyan-200/20 group-hover:bg-black/25">
                     <div className="flex items-center justify-between">
-                      <span className="rounded-full bg-white/10 px-3 py-1 text-xs text-slate-200">
+                      <span className="rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs font-bold text-slate-200">
                         {project.category}
                       </span>
-                      <Rocket className="h-5 w-5 text-cyan-200" />
+                      <Rocket className="h-5 w-5 text-cyan-200 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                     </div>
                     <div>
-                      <div className="mb-3 h-3 w-2/3 rounded-full bg-white/30" />
-                      <div className="h-3 w-1/2 rounded-full bg-white/15" />
+                      <div className="mb-3 h-3 w-2/3 rounded-full bg-white/30 transition group-hover:w-3/4" />
+                      <div className="h-3 w-1/2 rounded-full bg-white/15 transition group-hover:w-2/3" />
                     </div>
                   </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-2xl font-black">{project.name}</h3>
-                  <p className="mt-3 leading-7 text-slate-400">{project.summary}</p>
+                <div className="p-6 sm:p-7">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                    <h3 className="text-2xl font-black leading-8">{project.name}</h3>
+                    <span className="w-fit rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-bold text-cyan-100">
+                      Case Study
+                    </span>
+                  </div>
+                  <div className="mt-5 space-y-4 text-sm leading-7 text-slate-400 sm:text-[15px]">
+                    <p>
+                      <span className="font-bold text-slate-200">Problem:</span>{" "}
+                      {project.problem}
+                    </p>
+                    <p>
+                      <span className="font-bold text-slate-200">Solution:</span>{" "}
+                      {project.solution}
+                    </p>
+                    <p>
+                      <span className="font-bold text-slate-200">Impact:</span>{" "}
+                      {project.impact}
+                    </p>
+                  </div>
                   <div className="mt-6 flex flex-wrap gap-2">
                     {project.stack.map((tech) => (
                       <span
                         key={tech}
-                        className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs text-slate-300"
+                        className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs font-medium text-slate-300 transition group-hover:border-white/15 group-hover:bg-white/[0.07]"
                       >
                         {tech}
                       </span>
@@ -769,6 +847,86 @@ export default function RyanKizitoPortfolio() {
         </div>
       </section>
 
+      <section className="relative z-10 mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:py-28">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.65 }}
+          >
+            <SectionLabel>Trust Signals</SectionLabel>
+            <h2 className="max-w-3xl text-4xl font-black tracking-[-0.04em] sm:text-5xl">
+              Built with the standards clients expect from serious software.
+            </h2>
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
+              Clear communication, responsive interfaces, reliable backend
+              foundations, accessible markup, and launch-ready deployment are
+              part of the build from day one.
+            </p>
+          </motion.div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {testimonials.map((item, index) => (
+              <motion.figure
+                key={item.person}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.55, delay: index * 0.08 }}
+                whileHover={{ y: -6 }}
+                className="rounded-3xl border border-white/10 bg-white/[0.05] p-6 shadow-xl shadow-black/10 backdrop-blur-xl transition duration-300 hover:border-cyan-300/25 hover:bg-white/[0.07]"
+              >
+                <div className="mb-5 flex items-center gap-2 text-cyan-200">
+                  {Array.from({ length: 5 }).map((_, starIndex) => (
+                    <Sparkles key={starIndex} className="h-4 w-4" />
+                  ))}
+                </div>
+                <blockquote className="leading-7 text-slate-300">
+                  &ldquo;{item.quote}&rdquo;
+                </blockquote>
+                <figcaption className="mt-6 border-t border-white/10 pt-4">
+                  <p className="font-black text-white">{item.person}</p>
+                  <p className="mt-1 text-sm text-slate-400">{item.role}</p>
+                </figcaption>
+              </motion.figure>
+            ))}
+
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.55, delay: 0.16 }}
+              className="rounded-3xl border border-cyan-300/20 bg-cyan-300/10 p-6 shadow-xl shadow-cyan-950/15 backdrop-blur-xl sm:col-span-2"
+            >
+              <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex items-center gap-4">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-300 text-slate-950">
+                    <CalendarCheck className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <p className="font-black text-white">
+                      Available for freelance and client projects
+                    </p>
+                    <p className="mt-1 text-sm leading-6 text-slate-300">
+                      Best fit: business systems, dashboards, websites, booking
+                      platforms, payment flows, and automation tools.
+                    </p>
+                  </div>
+                </div>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-cyan-300 px-5 py-3 text-sm font-black text-slate-950 shadow-lg shadow-cyan-500/20 transition duration-300 hover:-translate-y-1 hover:bg-cyan-200"
+                >
+                  Check Availability
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       <section
         id="contact"
         className="relative z-10 mx-auto max-w-7xl px-5 py-24 sm:px-8"
@@ -777,18 +935,36 @@ export default function RyanKizitoPortfolio() {
           <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div>
               <SectionLabel>Let’s Build</SectionLabel>
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-300/20 bg-emerald-300/10 px-4 py-2 text-sm font-bold text-emerald-100">
+                <span className="h-2.5 w-2.5 rounded-full bg-emerald-300" />
+                Open to freelance and client work
+              </div>
               <h2 className="text-4xl font-black tracking-[-0.04em] sm:text-6xl">
-                Have an idea for a website, app, SaaS, or business system?
+                Let’s build something great for your business.
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-                Let’s turn it into a clean, premium, functional product that
-                people can actually use.
+                Bring the idea, workflow, or business problem. I will help turn
+                it into a clean, premium, functional product people can actually
+                use.
               </p>
+              <div className="mt-8 grid gap-3 text-sm text-slate-300 sm:grid-cols-3">
+                {["Business-first planning", "Responsive implementation", "Launch support"].map(
+                  (item) => (
+                    <div
+                      key={item}
+                      className="rounded-2xl border border-white/10 bg-white/[0.06] p-4"
+                    >
+                      <BadgeCheck className="mb-3 h-5 w-5 text-cyan-200" />
+                      {item}
+                    </div>
+                  )
+                )}
+              </div>
             </div>
             <div className="space-y-4">
               <a
                 href="https://wa.me/256770327098"
-                className="group flex items-center justify-between rounded-3xl border border-white/10 bg-white/10 p-5 transition hover:-translate-y-1 hover:bg-white/15"
+                className="group flex items-center justify-between rounded-3xl border border-white/10 bg-white/10 p-5 shadow-lg shadow-black/10 transition duration-300 hover:-translate-y-1 hover:border-cyan-300/25 hover:bg-white/15"
               >
                 <span className="flex items-center gap-3 font-bold">
                   <PhoneCall className="h-5 w-5 text-cyan-200" /> WhatsApp Me
@@ -797,7 +973,7 @@ export default function RyanKizitoPortfolio() {
               </a>
               <a
                 href="mailto:webchemydevelopers@gmail.com"
-                className="group flex items-center justify-between rounded-3xl border border-white/10 bg-white/10 p-5 transition hover:-translate-y-1 hover:bg-white/15"
+                className="group flex items-center justify-between rounded-3xl border border-white/10 bg-white/10 p-5 shadow-lg shadow-black/10 transition duration-300 hover:-translate-y-1 hover:border-cyan-300/25 hover:bg-white/15"
               >
                 <span className="flex items-center gap-3 font-bold">
                   <Mail className="h-5 w-5 text-cyan-200" /> Send Email
@@ -806,7 +982,7 @@ export default function RyanKizitoPortfolio() {
               </a>
               <a
                 href="https://github.com/RYANKIZITO"
-                className="group flex items-center justify-between rounded-3xl border border-white/10 bg-white/10 p-5 transition hover:-translate-y-1 hover:bg-white/15"
+                className="group flex items-center justify-between rounded-3xl border border-white/10 bg-white/10 p-5 shadow-lg shadow-black/10 transition duration-300 hover:-translate-y-1 hover:border-cyan-300/25 hover:bg-white/15"
               >
                 <span className="flex items-center gap-3 font-bold">
                   <svg
