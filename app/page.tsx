@@ -79,7 +79,7 @@ const projects = [
       "Designed an LMS direction with courses, payments, student dashboards, instructor workflows, and certificates.",
     impact:
       "Creates a stronger path from enrollment to delivery, with less manual administration.",
-    stack: ["Next.js", "Node.js", "PostgreSQL", "Prisma", "Payments"],
+    stack: ["EJS", "Node.js", "PostgreSQL", "Prisma", "Payments"],
   },
   {
     name: "PROBA Safaris",
