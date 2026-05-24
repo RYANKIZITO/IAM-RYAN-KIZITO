@@ -13,6 +13,7 @@ import {
   CreditCard,
   Cpu,
   Database,
+  ExternalLink,
   GraduationCap,
   LayoutDashboard,
   Mail,
@@ -69,17 +70,38 @@ const services = [
   },
 ];
 
-const projects = [
+type Project = {
+  name: string;
+  category: string;
+  problem: string;
+  solution: string;
+  impact: string;
+  stack: string[];
+  url?: string;
+  image?: string;
+  status?: string;
+  highlights?: string[];
+};
+
+const projects: Project[] = [
   {
     name: "Bilge Online Institute",
-    category: "Learning Management System",
+    category: "Education Platform",
     problem:
-      "Training teams need a structured way to sell courses, onboard learners, and track progress online.",
+      "Bilge needed a public gateway where learners could review programmes, admissions details, tuition guidance, faculty information, and contact channels before registration.",
     solution:
-      "Designed an LMS direction with courses, payments, student dashboards, instructor workflows, and certificates.",
+      "Built and launched a responsive institute website connected to the Bilge learning journey, with programme discovery, admissions CTAs, login/signup paths, multilingual access, careers, insights, and support touchpoints.",
     impact:
-      "Creates a stronger path from enrollment to delivery, with less manual administration.",
-    stack: ["EJS", "Node.js", "PostgreSQL", "Prisma", "Payments"],
+      "The live site now presents 67 published programmes across active categories and gives students a clear route from exploration to enrollment and LMS access.",
+    stack: ["Next.js", "React", "Tailwind CSS", "Responsive UI", "LMS"],
+    url: "https://bilgeonline.institute/",
+    image: "/bilge-online-institute.png",
+    status: "Live system",
+    highlights: [
+      "67 published programmes",
+      "Admissions and tuition guidance",
+      "Login, signup, and LMS pathway",
+    ],
   },
   {
     name: "PROBA Safaris",
@@ -730,27 +752,79 @@ export default function RyanKizitoPortfolio() {
                 whileHover={{ y: -8 }}
                 className="group overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/75 shadow-2xl shadow-black/20 backdrop-blur-xl transition duration-300 hover:border-cyan-300/25 hover:shadow-cyan-950/25"
               >
-                <div className="h-48 border-b border-white/10 bg-gradient-to-br from-cyan-300/20 via-violet-500/15 to-amber-300/10 p-5">
-                  <div className="flex h-full flex-col justify-between rounded-3xl border border-white/10 bg-black/20 p-4 transition duration-300 group-hover:border-cyan-200/20 group-hover:bg-black/25">
-                    <div className="flex items-center justify-between">
-                      <span className="rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs font-bold text-slate-200">
-                        {project.category}
+                <div className="relative h-48 overflow-hidden border-b border-white/10 bg-gradient-to-br from-cyan-300/20 via-violet-500/15 to-amber-300/10 p-5">
+                  {project.image ? (
+                    <>
+                      <Image
+                        src={project.image}
+                        alt={`${project.name} live website screenshot`}
+                        width={1900}
+                        height={868}
+                        sizes="(min-width: 768px) 50vw, 100vw"
+                        className="absolute inset-0 h-full w-full object-cover opacity-80 transition duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/45 to-slate-950/10" />
+                    </>
+                  ) : null}
+                  <div className="relative flex h-full flex-col justify-between rounded-3xl border border-white/10 bg-black/20 p-4 transition duration-300 group-hover:border-cyan-200/20 group-hover:bg-black/25">
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="rounded-full border border-white/10 bg-slate-950/70 px-3 py-1 text-xs font-bold text-slate-100 backdrop-blur">
+                        {project.status ?? project.category}
                       </span>
-                      <Rocket className="h-5 w-5 text-cyan-200 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                      {project.url ? (
+                        <a
+                          href={project.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`Visit ${project.name}`}
+                          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-cyan-200/25 bg-cyan-300/15 text-cyan-100 backdrop-blur transition hover:-translate-y-0.5 hover:bg-cyan-300/25"
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                        </a>
+                      ) : (
+                        <Rocket className="h-5 w-5 text-cyan-200 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                      )}
                     </div>
-                    <div>
-                      <div className="mb-3 h-3 w-2/3 rounded-full bg-white/30 transition group-hover:w-3/4" />
-                      <div className="h-3 w-1/2 rounded-full bg-white/15 transition group-hover:w-2/3" />
+                    <div className="max-w-sm">
+                      <p className="text-xs font-bold uppercase tracking-[0.18em] text-cyan-100/90">
+                        {project.category}
+                      </p>
+                      <p className="mt-2 text-lg font-black leading-6 text-white">
+                        {project.url ? "Production website and student pathway" : project.name}
+                      </p>
                     </div>
                   </div>
                 </div>
                 <div className="p-6 sm:p-7">
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                     <h3 className="text-2xl font-black leading-8">{project.name}</h3>
-                    <span className="w-fit rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-bold text-cyan-100">
-                      Case Study
-                    </span>
+                    {project.url ? (
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex w-fit items-center gap-1.5 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-bold text-cyan-100 transition hover:border-cyan-200/40 hover:bg-cyan-300/15"
+                      >
+                        Visit live <ExternalLink className="h-3.5 w-3.5" />
+                      </a>
+                    ) : (
+                      <span className="w-fit rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-xs font-bold text-cyan-100">
+                        Case Study
+                      </span>
+                    )}
                   </div>
+                  {project.highlights ? (
+                    <div className="mt-5 grid gap-2 sm:grid-cols-3">
+                      {project.highlights.map((highlight) => (
+                        <div
+                          key={highlight}
+                          className="rounded-2xl border border-white/10 bg-white/[0.04] px-3 py-2 text-xs font-bold leading-5 text-slate-200"
+                        >
+                          {highlight}
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
                   <div className="mt-5 space-y-4 text-sm leading-7 text-slate-400 sm:text-[15px]">
                     <p>
                       <span className="font-bold text-slate-200">Problem:</span>{" "}
